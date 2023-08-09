@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Recipe } from 'src/app/Models/recipe';
 
 @Component({
@@ -19,4 +19,9 @@ export class RecipeListComponent {
       'https://media.homecentre.com/i/homecentre/161298546-161298546-HC140219_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp-2x$'
     ),
   ];
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+
+  onRecipeSelected(recipe: Recipe){
+    this.recipeWasSelected.emit(recipe);
+  };
 }
